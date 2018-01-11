@@ -103,13 +103,13 @@ model = train_model(training_data)
 scores = []
 choices = []
 
-for each_game in range(100):
+for each_game in range(10):
     score = 0
     game_memory = []
     prev_obs = []
     env.reset()
     for _ in range(goal_steps):
-        #env.render()
+        env.render()
         if len(prev_obs) == 0:
             action = env.action_space.sample()
         else:
@@ -122,6 +122,7 @@ for each_game in range(100):
         score += reward
         if done:
             break
+    print("Score: " + str(score))
     scores.append(score)
 
 print("AVG: " + str(sum(scores)/len(scores)))
